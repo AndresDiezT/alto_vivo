@@ -26,7 +26,7 @@ class Settings(BaseSettings):
     ENTERPRISE_PLAN_MAX_BUSINESSES: int = 999
     
     class Config:
-        env_file = str(ENV_PATH)
+        env_file = str(ENV_PATH) if ENV_PATH.exists() else None
         env_file_encoding = "utf-8"
 
 @lru_cache()

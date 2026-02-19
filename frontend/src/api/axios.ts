@@ -1,8 +1,14 @@
 import axios, { AxiosError } from 'axios'
 import { useAuthStore } from '@/store/authStore'
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+if (!API_URL) {
+  throw new Error("VITE_API_URL no está definida");
+}
+
 export const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8000/api/v1',
+    baseURL: API_URL,
     headers: { 'Content-Type': 'application/json' },
 })
 
